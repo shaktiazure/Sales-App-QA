@@ -10,3 +10,9 @@ resource "azurerm_storage_account" "QA-Storage" {
     Deployedby  = "Terraform"
   }
 }
+
+resource "azurerm_storage_container" "qa-container" {
+  name                  = "tfstatebackup"
+  storage_account_name  = azurerm_storage_account.QA-Storage.name
+  container_access_type = "private"
+}
